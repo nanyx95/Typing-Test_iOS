@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		CA812BD8260F9F3E00A64104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA812BD7260F9F3E00A64104 /* Assets.xcassets */; };
 		CA812BDB260F9F3E00A64104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA812BDA260F9F3E00A64104 /* Preview Assets.xcassets */; };
 		CA812BE5260FA5E000A64104 /* TypedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA812BE4260FA5E000A64104 /* TypedWord.swift */; };
+		CAD987932610EF13009DE430 /* MbSwiftUIFirstResponder in Frameworks */ = {isa = PBXBuildFile; productRef = CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD987932610EF13009DE430 /* MbSwiftUIFirstResponder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +98,9 @@
 			dependencies = (
 			);
 			name = "Typing Test";
+			packageProductDependencies = (
+				CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */,
+			);
 			productName = "Typing Test";
 			productReference = CA812BD0260F9F3D00A64104 /* Typing Test.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +128,9 @@
 				Base,
 			);
 			mainGroup = CA812BC7260F9F3D00A64104;
+			packageReferences = (
+				CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */,
+			);
 			productRefGroup = CA812BD1260F9F3D00A64104 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -340,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mobilinked/MbSwiftUIFirstResponder";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */;
+			productName = MbSwiftUIFirstResponder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA812BC8260F9F3D00A64104 /* Project object */;
 }
