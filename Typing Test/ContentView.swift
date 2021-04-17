@@ -10,10 +10,7 @@ import MbSwiftUIFirstResponder
 
 struct ContentView: View {
 	
-	@State private var textFieldValue = ""
-	
-	var rightWords: [String] = ["test", "words", "from", "backend", "overflow", "pippo"]
-	@State var leftWords: [String] = []
+	@StateObject private var typingVM = TypingViewModel()
 	
 	enum FirstResponders: Int {
 		case inputWord
@@ -21,6 +18,24 @@ struct ContentView: View {
 	@State var firstResponder: FirstResponders? = nil
 	
     var body: some View {
+		let binding = Binding<String>(
+			get: { typingVM.textFieldValue },
+			set: { newValue in
+				print("char \(newValue)")
+//				if newValue.suffix(1) == " " {
+//					print("spazio")
+//					typingVM.onInput(word: newValue, isSpace: true)
+//				} else if newValue == String(typingVM.textFieldValue.dropLast()) {
+//					print("backspace")
+//					typingVM.onInput(word: newValue, isBackspace: true)
+//				} else {
+//					print("lettera normale")
+//					typingVM.onInput(word: newValue)
+//				}
+				typingVM.evaluateKeypress(word: newValue)
+			}
+		)
+		
 		VStack {
 			Spacer()
 			
@@ -46,14 +61,17 @@ struct ContentView: View {
 					HStack {
 						ScrollView(.horizontal, showsIndicators: false) {
 							HStack {
-								ForEach(leftWords, id: \.self) { leftWord in
-									Text(leftWord)
+								ForEach(typingVM.typedWords, id: \.id) { word in
+									Text(word.word)
+										.strikethrough(word.isCorrect ? false : true)
 										.foregroundColor(Color("typed-words"))
 										.padding(-1.0)
 								}
-								Text(textFieldValue)
+								Text(typingVM.textFieldValue)
+									.strikethrough(typingVM.flagWrongWord ? true : false)
 									.foregroundColor(Color("current-word"))
 									.padding(-1.0)
+									
 							}
 							.rotationEffect(.degrees(180))
 						}
@@ -62,7 +80,7 @@ struct ContentView: View {
 					}
 				)
 				
-				TextField(" ", text: $textFieldValue, onCommit: { firstResponder = nil })
+				TextField(" ", text: binding, onCommit: { firstResponder = nil })
 					.firstResponder(id: FirstResponders.inputWord, firstResponder: $firstResponder, resignableUserOperations: .all)
 					.disableAutocorrection(true)
 					.autocapitalization(.none)
@@ -71,15 +89,15 @@ struct ContentView: View {
 					.lineLimit(1)
 	//				.border(Color.black)
 					.frame(width: 1, height: 0)
-					.onChange(of: textFieldValue) {
-						submitWord(word: $0)
-					}
+//					.onChange(of: typingVM.textFieldValue) {
+//						submitWord(word: $0)
+//					}
 				
 				Spacer().overlay(
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack {
-							ForEach(rightWords, id: \.self) { rightWord in
-								Text(rightWord)
+							ForEach(typingVM.words, id: \.id) { word in
+								Text(word.word)
 									.padding(-1.0)
 	//								.frame(width: .infinity, alignment: .leading)
 							}
@@ -119,12 +137,13 @@ struct ContentView: View {
 		}
 	}
 	
-	func submitWord(word: String) {
-		if word.suffix(1) == " " && word.count != 1 {
-			leftWords.append(String(word.dropLast()))
-			textFieldValue = ""
-		}
-	}
+//	func submitWord(word: String) {
+//		print(word)
+//		if word.suffix(1) == " " && word.count != 1 {
+//			typingVM.typedWords.append(String(word.dropLast()))
+//			typingVM.textFieldValue = ""
+//		}
+//	}
 }
 
 struct ContentView_Previews: PreviewProvider {

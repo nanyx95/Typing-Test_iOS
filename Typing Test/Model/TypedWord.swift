@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct TypedWord {
+struct TypedWord: Identifiable {
+	let id = UUID()
 	var word: String
 	var isCorrect: Bool
 }
