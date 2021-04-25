@@ -15,6 +15,7 @@
 		CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */; };
 		CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07E2262208EC00EA67A4 /* Word.swift */; };
 		CAD987932610EF13009DE430 /* MbSwiftUIFirstResponder in Frameworks */ = {isa = PBXBuildFile; productRef = CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */; };
+		CAE2B6522634999900D68350 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE2B6512634999900D68350 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		CA812BE4260FA5E000A64104 /* TypedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedWord.swift; sourceTree = "<group>"; };
 		CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewModel.swift; sourceTree = "<group>"; };
 		CAAD07E2262208EC00EA67A4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		CAE2B6512634999900D68350 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				CA812BD7260F9F3E00A64104 /* Assets.xcassets */,
 				CA812BDC260F9F3E00A64104 /* Info.plist */,
 				CA812BD9260F9F3E00A64104 /* Preview Content */,
+				CAE2B6512634999900D68350 /* NetworkManager.swift */,
 			);
 			path = "Typing Test";
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAE2B6522634999900D68350 /* NetworkManager.swift in Sources */,
 				CA812BE5260FA5E000A64104 /* TypedWord.swift in Sources */,
 				CA812BD6260F9F3D00A64104 /* ContentView.swift in Sources */,
 				CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */,

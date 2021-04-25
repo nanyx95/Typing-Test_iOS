@@ -18,11 +18,11 @@ class TypingViewModel: ObservableObject {
 	
 	init() {
 		self.words = [
-			Word(word: "pippo"),
-			Word(word: "pluto"),
-			Word(word: "paperino"),
-			Word(word: "paperina"),
-			Word(word: "coniglio")
+//			Word(word: "pippo"),
+//			Word(word: "pluto"),
+//			Word(word: "paperino"),
+//			Word(word: "paperina"),
+//			Word(word: "coniglio")
 		]
 		self.typedWords = []
 		self.currentWord = ""
@@ -40,6 +40,7 @@ class TypingViewModel: ObservableObject {
 		if word.suffix(1) == " " {
 			print("spazio")
 			onSpace(word: word)
+			getWord()
 		} else if word == String(textFieldValue.dropLast()) {
 			print("backspace")
 			onBackspace(word: word)
@@ -151,6 +152,32 @@ class TypingViewModel: ObservableObject {
 		}
 		
 		print()
+	}
+	
+	func getWords(number: Int) {
+		let path = "words/\(number)"
+		
+		NetworkManager.shared.fetch(with: path, generalType: [Word].self) { result in
+			switch result {
+			case .success(let words):
+				self.words = words
+			case .failure(let error):
+				print(error)
+			}
+		}
+	}
+	
+	func getWord() {
+		let path = "word"
+		
+		NetworkManager.shared.fetch(with: path, generalType: Word.self) { result in
+			switch result {
+			case .success(let word):
+				self.words.append(word)
+			case .failure(let error):
+				print(error)
+			}
+		}
 	}
 	
 }

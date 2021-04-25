@@ -52,7 +52,7 @@ struct ContentView: View {
 				
 			Spacer()
 			
-			Text("Timer placeholder")
+			Text("Timer and stats placeholder")
 			
 			Spacer()
 			
@@ -135,15 +135,10 @@ struct ContentView: View {
 			
 			Spacer()
 		}
+		.onAppear {
+			typingVM.getWords(number: 10)
+		}
 	}
-	
-//	func submitWord(word: String) {
-//		print(word)
-//		if word.suffix(1) == " " && word.count != 1 {
-//			typingVM.typedWords.append(String(word.dropLast()))
-//			typingVM.textFieldValue = ""
-//		}
-//	}
 }
 
 struct ContentView_Previews: PreviewProvider {
