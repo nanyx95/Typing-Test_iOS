@@ -52,7 +52,12 @@ struct ContentView: View {
 				
 			Spacer()
 			
-			Text("Timer and stats placeholder")
+			CardView(color: Color("indigo-500")) {
+				HStack {
+					TimerView(lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
+					StatsView(textColor: .white)
+				}
+			}
 			
 			Spacer()
 			
