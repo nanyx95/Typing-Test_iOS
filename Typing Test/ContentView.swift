@@ -36,112 +36,118 @@ struct ContentView: View {
 			}
 		)
 		
-		VStack {
-			Spacer()
-			
-			Text("Typing Test")
-				.fontWeight(.light)
-				.foregroundColor(Color("title"))
-				.tracking(3)
-				.padding(.all)
-				.textCase(.uppercase)
-			Text("Test your typing skills")
-				.font(.system(size: 30))
-				.fontWeight(.bold)
-				.foregroundColor(Color("subtitle"))
-				
-			Spacer()
-			
-			CardView(color: Color("indigo-500")) {
+		
+		VStack(alignment: .leading) {
+			ScrollView {
 				HStack {
-					TimerView(lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
-					StatsView(textColor: .white)
+					Spacer()
+					Button(action: {
+						print("Rank")
+					}) {
+						ZStack {
+							Image(systemName: "chart.bar")
+								.renderingMode(.original)
+							RoundedRectangle(cornerRadius: 15, style: .continuous)
+								.stroke(Color.gray.opacity(0.3), style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
+								.frame(width: 50, height: 50)
+						}
+					}
 				}
-			}
-			
-			Spacer()
-			
-			HStack {
-				Spacer().overlay(
+				.padding()
+				
+				HStack {
+					VStack(alignment: .leading, spacing: 5) {
+						Text("Typing Test")
+							.font(.largeTitle)
+							.fontWeight(.semibold)
+						Text("Test your typing skills")
+							.font(.title)
+					}
+					Spacer()
+				}
+				.padding([.horizontal, .bottom])
+				
+				CardView(color: Color("indigo-500")) {
 					HStack {
-						ScrollView(.horizontal, showsIndicators: false) {
-							HStack {
-								ForEach(typingVM.typedWords, id: \.id) { word in
-									Text(word.word)
-										.strikethrough(word.isCorrect ? false : true)
-										.foregroundColor(Color("typed-words"))
+						TimerView(lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
+						StatsView(textColor: .white)
+					}
+					.frame(maxWidth: .infinity)
+				}
+				.padding()
+				
+				HStack {
+					Spacer().overlay(
+						HStack {
+							ScrollView(.horizontal, showsIndicators: false) {
+								HStack {
+									ForEach(typingVM.typedWords, id: \.id) { word in
+										Text(word.word)
+											.strikethrough(word.isCorrect ? false : true)
+											.foregroundColor(Color("typed-words"))
+											.padding(-1.0)
+									}
+									Text(typingVM.textFieldValue)
+										.strikethrough(typingVM.flagWrongWord ? true : false)
+										.foregroundColor(Color("current-word"))
 										.padding(-1.0)
+										
 								}
-								Text(typingVM.textFieldValue)
-									.strikethrough(typingVM.flagWrongWord ? true : false)
-									.foregroundColor(Color("current-word"))
-									.padding(-1.0)
-									
+								.rotationEffect(.degrees(180))
 							}
+							.disabled(true)
 							.rotationEffect(.degrees(180))
 						}
-						.disabled(true)
-						.rotationEffect(.degrees(180))
-					}
-				)
-				
-				TextField(" ", text: binding, onCommit: { firstResponder = nil })
-					.firstResponder(id: FirstResponders.inputWord, firstResponder: $firstResponder, resignableUserOperations: .all)
-					.disableAutocorrection(true)
-					.autocapitalization(.none)
-					.foregroundColor(.white)
-					.accentColor(.black)
-					.lineLimit(1)
-	//				.border(Color.black)
-					.frame(width: 1, height: 0)
-//					.onChange(of: typingVM.textFieldValue) {
-//						submitWord(word: $0)
-//					}
-				
-				Spacer().overlay(
-					ScrollView(.horizontal, showsIndicators: false) {
-						HStack {
-							ForEach(typingVM.words, id: \.id) { word in
-								Text(word.word)
-									.padding(-1.0)
-	//								.frame(width: .infinity, alignment: .leading)
+					)
+					
+					TextField(" ", text: binding, onCommit: { firstResponder = nil })
+						.firstResponder(id: FirstResponders.inputWord, firstResponder: $firstResponder, resignableUserOperations: .all)
+						.disableAutocorrection(true)
+						.autocapitalization(.none)
+						.foregroundColor(.white)
+						.accentColor(.black)
+						.lineLimit(1)
+		//				.border(Color.black)
+						.frame(width: 1, height: 0)
+	//					.onChange(of: typingVM.textFieldValue) {
+	//						submitWord(word: $0)
+	//					}
+					
+					Spacer().overlay(
+						ScrollView(.horizontal, showsIndicators: false) {
+							HStack {
+								ForEach(typingVM.words, id: \.id) { word in
+									Text(word.word)
+										.padding(-1.0)
+		//								.frame(width: .infinity, alignment: .leading)
+								}
 							}
 						}
-					}
-					.disabled(true)
-				)
-			}
-			.font(.system(size: 22))
-			.onTapGesture {
-				firstResponder = .inputWord
-			}
-			
-			Spacer()
-			
-			HStack {
+						.disabled(true)
+					)
+				}
+				.padding(.vertical, 50)
+				.font(.system(size: 22))
+				.onTapGesture {
+					firstResponder = .inputWord
+				}
+				
 				Button("Retry", action: {
-					
+					print("Retry")
 				})
-				.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-				.background(Color("btn-primary"))
+				.frame(maxWidth: .infinity, minHeight: 45)
+				.background(Color("indigo-500"))
 				.foregroundColor(.white)
 				.clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-				.shadow(color: Color.gray, radius: 2)
+				.padding()
 				
-				Button("Ranking", action: {
-					
-				})
-				.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-				.background(Color("btn-secondary"))
-				.foregroundColor(Color("btn-primary"))
-				.clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-				.shadow(color: Color.gray, radius: 2)
+				Spacer()
 			}
 			
-			Spacer()
 		}
+		.padding(.vertical, 0.1)
 		.onAppear {
-			typingVM.getWords(number: 10)
+//			typingVM.getWords(number: 10)
 		}
 	}
 }
