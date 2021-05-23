@@ -1,5 +1,5 @@
 //
-//  TimerManager.swift
+//  TimerViewModel.swift
 //  Typing Test
 //
 //  Created by Fabio Somaglia on 25/04/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class TimerManager: ObservableObject {
+class TimerViewModel: ObservableObject {
 	
 	let defaultTimeRemainig = 10
 	@Published var timerMode: TimerMode

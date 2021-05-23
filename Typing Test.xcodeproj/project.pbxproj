@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA16387D265032E6004B9D65 /* TypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16387C265032E6004B9D65 /* TypingView.swift */; };
+		CA16387F265038DD004B9D65 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16387E265038DD004B9D65 /* RankingView.swift */; };
 		CA4DB2032637585100D96CDA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4DB2022637585100D96CDA /* StatsView.swift */; };
+		CA6362DF265AB00E00AB31E3 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6362DE265AB00E00AB31E3 /* Stats.swift */; };
 		CA812BD4260F9F3D00A64104 /* TypingTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA812BD3260F9F3D00A64104 /* TypingTestApp.swift */; };
 		CA812BD6260F9F3D00A64104 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA812BD5260F9F3D00A64104 /* ContentView.swift */; };
 		CA812BD8260F9F3E00A64104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA812BD7260F9F3E00A64104 /* Assets.xcassets */; };
 		CA812BDB260F9F3E00A64104 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA812BDA260F9F3E00A64104 /* Preview Assets.xcassets */; };
 		CA812BE5260FA5E000A64104 /* TypedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA812BE4260FA5E000A64104 /* TypedWord.swift */; };
-		CA8B54612635EFDA00343817 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B54602635EFDA00343817 /* TimerManager.swift */; };
+		CA8B54612635EFDA00343817 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B54602635EFDA00343817 /* TimerViewModel.swift */; };
 		CA8B54642635F32200343817 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B54632635F32200343817 /* TimerView.swift */; };
+		CAAC1D9626514B9D008B4585 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = CAAC1D9526514B9D008B4585 /* SlideOverCard */; };
+		CAAC1D9826515A51008B4585 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9726515A51008B4585 /* TestResultView.swift */; };
+		CAAC1D9A26515AAE008B4585 /* SaveScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9926515AAE008B4585 /* SaveScoreView.swift */; };
+		CAAC1D9C2651757B008B4585 /* TestSlideOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */; };
 		CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */; };
 		CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07E2262208EC00EA67A4 /* Word.swift */; };
 		CAC712CD2648372E0078F333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC712CC2648372E0078F333 /* CardView.swift */; };
@@ -23,7 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA16387C265032E6004B9D65 /* TypingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingView.swift; sourceTree = "<group>"; };
+		CA16387E265038DD004B9D65 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		CA4DB2022637585100D96CDA /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		CA6362DE265AB00E00AB31E3 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		CA812BD0260F9F3D00A64104 /* Typing Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Typing Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA812BD3260F9F3D00A64104 /* TypingTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingTestApp.swift; sourceTree = "<group>"; };
 		CA812BD5260F9F3D00A64104 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,8 +41,11 @@
 		CA812BDA260F9F3E00A64104 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA812BDC260F9F3E00A64104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA812BE4260FA5E000A64104 /* TypedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypedWord.swift; sourceTree = "<group>"; };
-		CA8B54602635EFDA00343817 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		CA8B54602635EFDA00343817 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		CA8B54632635F32200343817 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		CAAC1D9726515A51008B4585 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
+		CAAC1D9926515AAE008B4585 /* SaveScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScoreView.swift; sourceTree = "<group>"; };
+		CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSlideOver.swift; sourceTree = "<group>"; };
 		CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewModel.swift; sourceTree = "<group>"; };
 		CAAD07E2262208EC00EA67A4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CAC712CC2648372E0078F333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -44,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAAC1D9626514B9D008B4585 /* SlideOverCard in Frameworks */,
 				CAD987932610EF13009DE430 /* MbSwiftUIFirstResponder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +84,7 @@
 		CA812BD2260F9F3D00A64104 /* Typing Test */ = {
 			isa = PBXGroup;
 			children = (
+				CADE43082652F7E400E66E8A /* Accessories */,
 				CAAD07DD2621FFB600EA67A4 /* View */,
 				CAAD07DC2621FFA600EA67A4 /* ViewModel */,
 				CA812BE3260FA5AF00A64104 /* Model */,
@@ -78,7 +93,7 @@
 				CA812BD7260F9F3E00A64104 /* Assets.xcassets */,
 				CA812BDC260F9F3E00A64104 /* Info.plist */,
 				CA812BD9260F9F3E00A64104 /* Preview Content */,
-				CAE2B6512634999900D68350 /* NetworkManager.swift */,
+				CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */,
 			);
 			path = "Typing Test";
 			sourceTree = "<group>";
@@ -96,6 +111,7 @@
 			children = (
 				CA812BE4260FA5E000A64104 /* TypedWord.swift */,
 				CAAD07E2262208EC00EA67A4 /* Word.swift */,
+				CA6362DE265AB00E00AB31E3 /* Stats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,7 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */,
-				CA8B54602635EFDA00343817 /* TimerManager.swift */,
+				CA8B54602635EFDA00343817 /* TimerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -114,9 +130,21 @@
 			children = (
 				CA8B54632635F32200343817 /* TimerView.swift */,
 				CA4DB2022637585100D96CDA /* StatsView.swift */,
-				CAC712CC2648372E0078F333 /* CardView.swift */,
+				CA16387C265032E6004B9D65 /* TypingView.swift */,
+				CA16387E265038DD004B9D65 /* RankingView.swift */,
+				CAAC1D9726515A51008B4585 /* TestResultView.swift */,
+				CAAC1D9926515AAE008B4585 /* SaveScoreView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CADE43082652F7E400E66E8A /* Accessories */ = {
+			isa = PBXGroup;
+			children = (
+				CAC712CC2648372E0078F333 /* CardView.swift */,
+				CAE2B6512634999900D68350 /* NetworkManager.swift */,
+			);
+			path = Accessories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +165,7 @@
 			name = "Typing Test";
 			packageProductDependencies = (
 				CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */,
+				CAAC1D9526514B9D008B4585 /* SlideOverCard */,
 			);
 			productName = "Typing Test";
 			productReference = CA812BD0260F9F3D00A64104 /* Typing Test.app */;
@@ -167,6 +196,7 @@
 			mainGroup = CA812BC7260F9F3D00A64104;
 			packageReferences = (
 				CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */,
+				CAAC1D9426514B9D008B4585 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
 			);
 			productRefGroup = CA812BD1260F9F3D00A64104 /* Products */;
 			projectDirPath = "";
@@ -195,15 +225,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAE2B6522634999900D68350 /* NetworkManager.swift in Sources */,
+				CAAC1D9826515A51008B4585 /* TestResultView.swift in Sources */,
+				CA16387F265038DD004B9D65 /* RankingView.swift in Sources */,
 				CA812BE5260FA5E000A64104 /* TypedWord.swift in Sources */,
+				CAAC1D9C2651757B008B4585 /* TestSlideOver.swift in Sources */,
+				CA6362DF265AB00E00AB31E3 /* Stats.swift in Sources */,
 				CA812BD6260F9F3D00A64104 /* ContentView.swift in Sources */,
 				CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */,
 				CAC712CD2648372E0078F333 /* CardView.swift in Sources */,
 				CA812BD4260F9F3D00A64104 /* TypingTestApp.swift in Sources */,
-				CA8B54612635EFDA00343817 /* TimerManager.swift in Sources */,
+				CA8B54612635EFDA00343817 /* TimerViewModel.swift in Sources */,
 				CA8B54642635F32200343817 /* TimerView.swift in Sources */,
 				CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */,
 				CA4DB2032637585100D96CDA /* StatsView.swift in Sources */,
+				CAAC1D9A26515AAE008B4585 /* SaveScoreView.swift in Sources */,
+				CA16387D265032E6004B9D65 /* TypingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +430,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CAAC1D9426514B9D008B4585 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mobilinked/MbSwiftUIFirstResponder";
@@ -405,6 +449,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CAAC1D9526514B9D008B4585 /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAAC1D9426514B9D008B4585 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
+		};
 		CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CAD987912610EF13009DE430 /* XCRemoteSwiftPackageReference "MbSwiftUIFirstResponder" */;

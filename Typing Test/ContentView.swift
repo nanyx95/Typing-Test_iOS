@@ -7,42 +7,21 @@
 
 import SwiftUI
 import MbSwiftUIFirstResponder
+import SlideOverCard
 
 struct ContentView: View {
 	
 	@StateObject private var typingVM = TypingViewModel()
-	
-	enum FirstResponders: Int {
-		case inputWord
-	}
-	@State var firstResponder: FirstResponders? = nil
+	@StateObject private var timerVM = TimerViewModel()
+	@State private var activeSlideOverCard: SlideOverCardViews?
 	
     var body: some View {
-		let binding = Binding<String>(
-			get: { typingVM.textFieldValue },
-			set: { newValue in
-				print("char \(newValue)")
-//				if newValue.suffix(1) == " " {
-//					print("spazio")
-//					typingVM.onInput(word: newValue, isSpace: true)
-//				} else if newValue == String(typingVM.textFieldValue.dropLast()) {
-//					print("backspace")
-//					typingVM.onInput(word: newValue, isBackspace: true)
-//				} else {
-//					print("lettera normale")
-//					typingVM.onInput(word: newValue)
-//				}
-				typingVM.evaluateKeypress(word: newValue)
-			}
-		)
-		
-		
 		VStack(alignment: .leading) {
 			ScrollView {
 				HStack {
 					Spacer()
 					Button(action: {
-						print("Rank")
+						activeSlideOverCard = .ranking
 					}) {
 						ZStack {
 							Image(systemName: "chart.bar")
@@ -65,91 +44,74 @@ struct ContentView: View {
 					}
 					Spacer()
 				}
-				.padding([.horizontal, .bottom])
+				.padding(.horizontal)
+				.padding(.top, 15)
+				.padding(.bottom, 25)
 				
 				CardView(color: Color("indigo-500")) {
 					HStack {
-						TimerView(lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
-						StatsView(textColor: .white)
+						TimerView(timerVM: timerVM, lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
+						StatsView(typingVM: typingVM, textColor: .white)
 					}
 					.frame(maxWidth: .infinity)
 				}
-				.padding()
+				.padding(.horizontal)
+				.padding(.vertical, 20)
 				
-				HStack {
-					Spacer().overlay(
-						HStack {
-							ScrollView(.horizontal, showsIndicators: false) {
-								HStack {
-									ForEach(typingVM.typedWords, id: \.id) { word in
-										Text(word.word)
-											.strikethrough(word.isCorrect ? false : true)
-											.foregroundColor(Color("typed-words"))
-											.padding(-1.0)
-									}
-									Text(typingVM.textFieldValue)
-										.strikethrough(typingVM.flagWrongWord ? true : false)
-										.foregroundColor(Color("current-word"))
-										.padding(-1.0)
-										
-								}
-								.rotationEffect(.degrees(180))
-							}
-							.disabled(true)
-							.rotationEffect(.degrees(180))
-						}
-					)
-					
-					TextField(" ", text: binding, onCommit: { firstResponder = nil })
-						.firstResponder(id: FirstResponders.inputWord, firstResponder: $firstResponder, resignableUserOperations: .all)
-						.disableAutocorrection(true)
-						.autocapitalization(.none)
-						.foregroundColor(.white)
-						.accentColor(.black)
-						.lineLimit(1)
-		//				.border(Color.black)
-						.frame(width: 1, height: 0)
-	//					.onChange(of: typingVM.textFieldValue) {
-	//						submitWord(word: $0)
-	//					}
-					
-					Spacer().overlay(
-						ScrollView(.horizontal, showsIndicators: false) {
-							HStack {
-								ForEach(typingVM.words, id: \.id) { word in
-									Text(word.word)
-										.padding(-1.0)
-		//								.frame(width: .infinity, alignment: .leading)
-								}
-							}
-						}
-						.disabled(true)
-					)
-				}
-				.padding(.vertical, 50)
-				.font(.system(size: 22))
-				.onTapGesture {
-					firstResponder = .inputWord
-				}
+				TypingView(typingVM: typingVM, timerVM: timerVM)
+					.padding(.top, 50)
+					.padding(.bottom, 75)
 				
-				Button("Retry", action: {
-					print("Retry")
-				})
-				.frame(maxWidth: .infinity, minHeight: 45)
-				.background(Color("indigo-500"))
-				.foregroundColor(.white)
-				.clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-				.padding()
+				Button(action: {
+					typingVM.stats.resetStats()
+					timerVM.reset()
+				}){
+					RoundedRectangle(cornerRadius: 15, style: .continuous)
+						.frame(maxWidth: .infinity, minHeight: 45)
+						.foregroundColor(Color("indigo-500"))
+						.overlay(
+							Text("Retry")
+								.foregroundColor(.white)
+						)
+						.padding()
+				}
+				.buttonStyle(PlainButtonStyle())
 				
 				Spacer()
 			}
-			
 		}
 		.padding(.vertical, 0.1)
 		.onAppear {
 //			typingVM.getWords(number: 10)
 		}
+		.onReceive(timerVM.$secondsLeft) { seconds in
+			if seconds == 0 {
+				activeSlideOverCard = .testResult
+			}
+		}
+		.slideOverCard(item: $activeSlideOverCard) { item in
+			switch item {
+				case .testResult:
+					TestResultView(activeSlideOverCard: $activeSlideOverCard)
+				case .saveScore:
+					SaveScoreView(activeSlideOverCard: $activeSlideOverCard)
+				case .ranking:
+					RankingView()
+			}
+		}
 	}
+}
+
+enum SlideOverCardViews: Identifiable {
+	var id: Int {
+		get {
+			hashValue
+		}
+	}
+	
+	case testResult
+	case saveScore
+	case ranking
 }
 
 struct ContentView_Previews: PreviewProvider {

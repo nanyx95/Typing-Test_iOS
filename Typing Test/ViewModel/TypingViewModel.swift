@@ -15,19 +15,21 @@ class TypingViewModel: ObservableObject {
 	@Published var currentWord: String
 	@Published var textFieldValue: String
 	var flagWrongWord: Bool
+	@Published var stats: Stats
 	
 	init() {
 		self.words = [
-//			Word(word: "pippo"),
-//			Word(word: "pluto"),
-//			Word(word: "paperino"),
-//			Word(word: "paperina"),
-//			Word(word: "coniglio")
+			Word(word: "pippo"),
+			Word(word: "pluto"),
+			Word(word: "paperino"),
+			Word(word: "paperina"),
+			Word(word: "coniglio")
 		]
 		self.typedWords = []
 		self.currentWord = ""
 		self.textFieldValue = ""
 		self.flagWrongWord = false
+		self.stats = Stats()
 	}
 	
 	func evaluateKeypress(word: String) {
@@ -40,7 +42,7 @@ class TypingViewModel: ObservableObject {
 		if word.suffix(1) == " " {
 			print("spazio")
 			onSpace(word: word)
-			getWord()
+//			getWord()
 		} else if word == String(textFieldValue.dropLast()) {
 			print("backspace")
 			onBackspace(word: word)
@@ -54,9 +56,16 @@ class TypingViewModel: ObservableObject {
 		if !word.trimmingCharacters(in: .whitespaces).isEmpty {
 			// remove the space
 			let wordWithoutSpace = String(word.dropLast())
-			typedWords.append(TypedWord(word: wordWithoutSpace, isCorrect: wordWithoutSpace == currentWord ? true : false))
+			let isWordCorrect = wordWithoutSpace == currentWord ? true : false
+			typedWords.append(TypedWord(word: wordWithoutSpace, isCorrect: isWordCorrect))
 			// remove first item of the words array
 			words.removeFirst()
+			// update stats
+			if isWordCorrect {
+				stats.updateCorrectWord()
+				stats.updateCorrectChars(charsToAdd: wordWithoutSpace.count)
+			}
+			stats.updateTotalWord()
 			// set to null the current word
 			currentWord = ""
 			// clear input value

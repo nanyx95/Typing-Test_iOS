@@ -9,17 +9,14 @@ import SwiftUI
 
 struct StatsView: View {
 	
-	var textColor: Color
-	private var items: [GridItem] = Array(repeating: .init(.flexible(minimum: 100)), count: 2)
-	
-	init(textColor: Color = .black) {
-		self.textColor = textColor
-	}
+	@ObservedObject var typingVM: TypingViewModel
+	var textColor: Color = .black
+	private let items: [GridItem] = Array(repeating: .init(.flexible(minimum: 100)), count: 2)
 	
     var body: some View {
 		LazyVGrid(columns: items, spacing: 10) {
 			VStack {
-				Text("30")
+				Text(String(typingVM.stats.correctWords))
 					.font(.title)
 				Text("words/min")
 					.font(.caption)
@@ -27,7 +24,7 @@ struct StatsView: View {
 					.textCase(.uppercase)
 			}
 			VStack {
-				Text("80")
+				Text(String(typingVM.stats.correctChars))
 					.font(.title)
 				Text("chars/min")
 					.font(.caption)
@@ -35,7 +32,7 @@ struct StatsView: View {
 					.textCase(.uppercase)
 			}
 			VStack {
-				Text("100")
+				Text(String(typingVM.stats.accuracy))
 					.font(.title)
 				Text("% accuracy")
 					.font(.caption)
@@ -57,6 +54,6 @@ struct StatsView: View {
 
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsView()
+        StatsView(typingVM: TypingViewModel())
     }
 }
