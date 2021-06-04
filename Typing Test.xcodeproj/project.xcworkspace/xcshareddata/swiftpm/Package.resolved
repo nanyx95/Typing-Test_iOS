@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MbSwiftUIFirstResponder",
+        "repositoryURL": "https://github.com/mobilinked/MbSwiftUIFirstResponder",
+        "state": {
+          "branch": "main",
+          "revision": "4eafce5e917742334183f9bde9ebeedbcc0b1651",
+          "version": null
+        }
+      },
+      {
+        "package": "SlideOverCard",
+        "repositoryURL": "https://github.com/joogps/SlideOverCard.git",
+        "state": {
+          "branch": null,
+          "revision": "ddafedae02dc5423aa872b274d9011412dc4837f",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

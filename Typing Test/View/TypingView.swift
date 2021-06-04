@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TypingView: View {
 	
-	@ObservedObject var typingVM: TypingViewModel
+	@EnvironmentObject private var typingVM: TypingViewModel
 	@ObservedObject var timerVM: TimerViewModel
 	
 	enum FirstResponders: Int {
@@ -46,11 +46,15 @@ struct TypingView: View {
 						HStack {
 							ForEach(typingVM.typedWords, id: \.id) { word in
 								Text(word.word)
+									.font(.system(size: 25, design: .monospaced))
+									.tracking(-1)
 									.strikethrough(word.isCorrect ? false : true)
 									.foregroundColor(Color("typed-words"))
 									.padding(-1.0)
 							}
 							Text(typingVM.textFieldValue)
+								.font(.system(size: 25, design: .monospaced))
+								.tracking(-1)
 								.strikethrough(typingVM.flagWrongWord ? true : false)
 								.foregroundColor(Color("current-word"))
 								.padding(-1.0)
@@ -81,6 +85,8 @@ struct TypingView: View {
 					HStack {
 						ForEach(typingVM.words, id: \.id) { word in
 							Text(word.word)
+								.font(.system(size: 25, design: .monospaced))
+								.tracking(-1)
 								.padding(-1.0)
 //								.frame(width: .infinity, alignment: .leading)
 						}
@@ -103,6 +109,7 @@ struct TypingView: View {
 
 struct TypingView_Previews: PreviewProvider {
     static var previews: some View {
-        TypingView(typingVM: TypingViewModel(), timerVM: TimerViewModel())
+        TypingView(timerVM: TimerViewModel())
+			.environmentObject(TypingViewModel())
     }
 }

@@ -11,7 +11,7 @@ import SlideOverCard
 
 struct ContentView: View {
 	
-	@StateObject private var typingVM = TypingViewModel()
+	@EnvironmentObject private var typingVM: TypingViewModel
 	@StateObject private var timerVM = TimerViewModel()
 	@State private var activeSlideOverCard: SlideOverCardViews?
 	
@@ -21,6 +21,7 @@ struct ContentView: View {
 				HStack {
 					Spacer()
 					Button(action: {
+						timerVM.reset()
 						activeSlideOverCard = .ranking
 					}) {
 						ZStack {
@@ -38,7 +39,8 @@ struct ContentView: View {
 					VStack(alignment: .leading, spacing: 5) {
 						Text("Typing Test")
 							.font(.largeTitle)
-							.fontWeight(.semibold)
+							.fontWeight(.bold)
+							.foregroundColor(Color("indigo-500"))
 						Text("Test your typing skills")
 							.font(.title)
 					}
@@ -51,19 +53,19 @@ struct ContentView: View {
 				CardView(color: Color("indigo-500")) {
 					HStack {
 						TimerView(timerVM: timerVM, lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
-						StatsView(typingVM: typingVM, textColor: .white)
+						StatsView(textColor: .white)
 					}
 					.frame(maxWidth: .infinity)
 				}
 				.padding(.horizontal)
 				.padding(.vertical, 20)
 				
-				TypingView(typingVM: typingVM, timerVM: timerVM)
+				TypingView(timerVM: timerVM)
 					.padding(.top, 50)
 					.padding(.bottom, 75)
 				
 				Button(action: {
-					typingVM.stats.resetStats()
+					typingVM.resetTypingTest()
 					timerVM.reset()
 				}){
 					RoundedRectangle(cornerRadius: 15, style: .continuous)
@@ -81,11 +83,9 @@ struct ContentView: View {
 			}
 		}
 		.padding(.vertical, 0.1)
-		.onAppear {
-//			typingVM.getWords(number: 10)
-		}
 		.onReceive(timerVM.$secondsLeft) { seconds in
 			if seconds == 0 {
+				typingVM.saveTopWPMInUserDefaults()
 				activeSlideOverCard = .testResult
 			}
 		}
@@ -96,7 +96,13 @@ struct ContentView: View {
 				case .saveScore:
 					SaveScoreView(activeSlideOverCard: $activeSlideOverCard)
 				case .ranking:
-					RankingView()
+					RankingView(activeSlideOverCard: $activeSlideOverCard, userId: typingVM.userId)
+			}
+		}
+		.onChange(of: activeSlideOverCard) { status in
+			if status == nil {
+				typingVM.resetTypingTest()
+				timerVM.reset()
 			}
 		}
 	}
@@ -117,5 +123,6 @@ enum SlideOverCardViews: Identifiable {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+			.environmentObject(TypingViewModel())
     }
 }

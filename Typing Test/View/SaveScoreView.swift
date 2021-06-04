@@ -10,16 +10,33 @@ import SlideOverCard
 
 struct SaveScoreView: View {
 	
+	@EnvironmentObject private var typingVM: TypingViewModel
 	@Binding var activeSlideOverCard: SlideOverCardViews?
-	@State private var name: String = ""
+	@ObservedObject private var saveScoreVM = SaveScoreViewModel()
 	
 	var body: some View {
 		VStack {
+			Image("cloud")
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+			
 			Text("Save the score")
-			TextField("Nome", text: $name)
+				.font(.title2)
+				.bold()
+			
+			Text("Congratulations on reaching \(typingVM.stats.correctWords) WPM!")
+				.padding(.top, 10)
+			
+			TextField("Enter Name", text: $saveScoreVM.name)
+				.textFieldStyle(RoundedBorderTextFieldStyle())
+				.padding(.top, 10)
+				.padding(.bottom, 25)
+			
 			VStack {
 				Button(action: {
-					activeSlideOverCard = .ranking
+					saveScoreVM.saveScore(userScore: Ranking(id: typingVM.userId, user: saveScoreVM.name, wpm: typingVM.stats.correctWords, testDate: Double(Date().timeIntervalSince1970 * 1000))) {
+						activeSlideOverCard = .ranking
+					}
 				}){
 					RoundedRectangle(cornerRadius: 15, style: .continuous)
 						.frame(maxWidth: .infinity, maxHeight: 45)
@@ -30,6 +47,7 @@ struct SaveScoreView: View {
 						)
 				}
 				.buttonStyle(PlainButtonStyle())
+				
 				Button("Back", action: {
 					activeSlideOverCard = .testResult
 				})
@@ -41,5 +59,6 @@ struct SaveScoreView: View {
 struct SaveScoreView_Previews: PreviewProvider {
     static var previews: some View {
 		SaveScoreView(activeSlideOverCard: .constant(.saveScore))
+			.environmentObject(TypingViewModel())
     }
 }

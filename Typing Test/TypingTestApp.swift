@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct TypingTestApp: App {
+	
+	@StateObject private var typingVM = TypingViewModel()
+	
     var body: some Scene {
         WindowGroup {
             ContentView()
+				.environmentObject(typingVM)
         }
     }
 }

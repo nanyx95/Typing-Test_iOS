@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatsView: View {
 	
-	@ObservedObject var typingVM: TypingViewModel
+	@EnvironmentObject private var typingVM: TypingViewModel
 	var textColor: Color = .black
 	private let items: [GridItem] = Array(repeating: .init(.flexible(minimum: 100)), count: 2)
 	
@@ -40,7 +40,7 @@ struct StatsView: View {
 					.textCase(.uppercase)
 			}
 			VStack {
-				Text("37")
+				Text(String(typingVM.topWPM))
 					.font(.title)
 				Text("top words/min")
 					.font(.caption)
@@ -54,6 +54,7 @@ struct StatsView: View {
 
 struct StatsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsView(typingVM: TypingViewModel())
+        StatsView()
+			.environmentObject(TypingViewModel())
     }
 }

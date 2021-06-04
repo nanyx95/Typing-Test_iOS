@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0A51B7266ACC5E00B3E5DD /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A51B6266ACC5E00B3E5DD /* PrimaryButtonStyle.swift */; };
 		CA16387D265032E6004B9D65 /* TypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16387C265032E6004B9D65 /* TypingView.swift */; };
 		CA16387F265038DD004B9D65 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16387E265038DD004B9D65 /* RankingView.swift */; };
 		CA4DB2032637585100D96CDA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4DB2022637585100D96CDA /* StatsView.swift */; };
@@ -25,11 +26,15 @@
 		CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */; };
 		CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07E2262208EC00EA67A4 /* Word.swift */; };
 		CAC712CD2648372E0078F333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC712CC2648372E0078F333 /* CardView.swift */; };
+		CAD517C82667C1C4005FF418 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517C72667C1C4005FF418 /* Ranking.swift */; };
+		CAD517CA2667C863005FF418 /* SaveScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */; };
+		CAD517CC2667D4D1005FF418 /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */; };
 		CAD987932610EF13009DE430 /* MbSwiftUIFirstResponder in Frameworks */ = {isa = PBXBuildFile; productRef = CAD987922610EF13009DE430 /* MbSwiftUIFirstResponder */; };
 		CAE2B6522634999900D68350 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE2B6512634999900D68350 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA0A51B6266ACC5E00B3E5DD /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		CA16387C265032E6004B9D65 /* TypingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingView.swift; sourceTree = "<group>"; };
 		CA16387E265038DD004B9D65 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		CA4DB2022637585100D96CDA /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
@@ -49,6 +54,9 @@
 		CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewModel.swift; sourceTree = "<group>"; };
 		CAAD07E2262208EC00EA67A4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CAC712CC2648372E0078F333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		CAD517C72667C1C4005FF418 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScoreViewModel.swift; sourceTree = "<group>"; };
+		CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
 		CAE2B6512634999900D68350 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +120,7 @@
 				CA812BE4260FA5E000A64104 /* TypedWord.swift */,
 				CAAD07E2262208EC00EA67A4 /* Word.swift */,
 				CA6362DE265AB00E00AB31E3 /* Stats.swift */,
+				CAD517C72667C1C4005FF418 /* Ranking.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +130,8 @@
 			children = (
 				CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */,
 				CA8B54602635EFDA00343817 /* TimerViewModel.swift */,
+				CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */,
+				CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,6 +154,7 @@
 			children = (
 				CAC712CC2648372E0078F333 /* CardView.swift */,
 				CAE2B6512634999900D68350 /* NetworkManager.swift */,
+				CA0A51B6266ACC5E00B3E5DD /* PrimaryButtonStyle.swift */,
 			);
 			path = Accessories;
 			sourceTree = "<group>";
@@ -231,12 +243,16 @@
 				CAAC1D9C2651757B008B4585 /* TestSlideOver.swift in Sources */,
 				CA6362DF265AB00E00AB31E3 /* Stats.swift in Sources */,
 				CA812BD6260F9F3D00A64104 /* ContentView.swift in Sources */,
+				CAD517C82667C1C4005FF418 /* Ranking.swift in Sources */,
 				CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */,
 				CAC712CD2648372E0078F333 /* CardView.swift in Sources */,
 				CA812BD4260F9F3D00A64104 /* TypingTestApp.swift in Sources */,
 				CA8B54612635EFDA00343817 /* TimerViewModel.swift in Sources */,
 				CA8B54642635F32200343817 /* TimerView.swift in Sources */,
+				CAD517CC2667D4D1005FF418 /* RankingViewModel.swift in Sources */,
 				CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */,
+				CAD517CA2667C863005FF418 /* SaveScoreViewModel.swift in Sources */,
+				CA0A51B7266ACC5E00B3E5DD /* PrimaryButtonStyle.swift in Sources */,
 				CA4DB2032637585100D96CDA /* StatsView.swift in Sources */,
 				CAAC1D9A26515AAE008B4585 /* SaveScoreView.swift in Sources */,
 				CA16387D265032E6004B9D65 /* TypingView.swift in Sources */,
