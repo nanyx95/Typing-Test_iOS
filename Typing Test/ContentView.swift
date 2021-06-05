@@ -64,20 +64,12 @@ struct ContentView: View {
 					.padding(.top, 50)
 					.padding(.bottom, 75)
 				
-				Button(action: {
+				Button("Retry") {
 					typingVM.resetTypingTest()
 					timerVM.reset()
-				}){
-					RoundedRectangle(cornerRadius: 15, style: .continuous)
-						.frame(maxWidth: .infinity, minHeight: 45)
-						.foregroundColor(Color("indigo-500"))
-						.overlay(
-							Text("Retry")
-								.foregroundColor(.white)
-						)
-						.padding()
 				}
-				.buttonStyle(PlainButtonStyle())
+				.buttonStyle(PrimaryButtonStyle())
+				.padding()
 				
 				Spacer()
 			}

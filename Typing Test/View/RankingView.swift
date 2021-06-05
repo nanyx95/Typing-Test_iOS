@@ -32,25 +32,21 @@ struct RankingView: View {
 			VStack {
 				ForEach(rankingVM.rankingToDisplay.indices, id: \.self) { index in
 					let user = rankingVM.rankingToDisplay[index]
-					RankingCell(position: index + 1, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: typingVM.userId.caseInsensitiveCompare(user.id) == .orderedSame)
+					if typingVM.userId.caseInsensitiveCompare(user.id) == .orderedSame {
+						RankingCell(position: rankingVM.userPosition!, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: true)
+					} else {
+						RankingCell(position: index + 1, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: false)
+					}
 				}
 			}
 			.padding(.horizontal, 5)
 			.padding(.top, 10)
 			.padding(.bottom, 25)
 			
-			Button(action: {
+			Button("Close") {
 				activeSlideOverCard = nil
-			}){
-				RoundedRectangle(cornerRadius: 15, style: .continuous)
-					.frame(maxWidth: .infinity, maxHeight: 45)
-					.foregroundColor(Color("indigo-500"))
-					.overlay(
-						Text("Close")
-							.foregroundColor(.white)
-					)
 			}
-			.buttonStyle(PlainButtonStyle())
+			.buttonStyle(PrimaryButtonStyle())
 		}
 	}
 }

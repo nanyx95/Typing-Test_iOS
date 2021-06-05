@@ -46,18 +46,10 @@ struct TestResultView: View {
 				resultContent(image: "rocket", title: "You're a Rocket!", text1: "Nice!", text2: "Keep practicing!")
 			}
 			
-			Button(action: {
+			Button("Save the score") {
 				activeSlideOverCard = .saveScore
-			}){
-				RoundedRectangle(cornerRadius: 15, style: .continuous)
-					.frame(maxWidth: .infinity, maxHeight: 45)
-					.foregroundColor(Color("indigo-500"))
-					.overlay(
-						Text("Save the score")
-							.foregroundColor(.white)
-					)
 			}
-			.buttonStyle(PlainButtonStyle())
+			.buttonStyle(PrimaryButtonStyle())
 		}
     }
 }

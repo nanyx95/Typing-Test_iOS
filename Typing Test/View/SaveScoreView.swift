@@ -33,24 +33,18 @@ struct SaveScoreView: View {
 				.padding(.bottom, 25)
 			
 			VStack {
-				Button(action: {
+				Button("Save") {
 					saveScoreVM.saveScore(userScore: Ranking(id: typingVM.userId, user: saveScoreVM.name, wpm: typingVM.stats.correctWords, testDate: Double(Date().timeIntervalSince1970 * 1000))) {
 						activeSlideOverCard = .ranking
 					}
-				}){
-					RoundedRectangle(cornerRadius: 15, style: .continuous)
-						.frame(maxWidth: .infinity, maxHeight: 45)
-						.foregroundColor(Color("indigo-500"))
-						.overlay(
-							Text("Save")
-								.foregroundColor(.white)
-						)
 				}
-				.buttonStyle(PlainButtonStyle())
+				.buttonStyle(PrimaryButtonStyle())
+				.disabled(saveScoreVM.name == "")
 				
 				Button("Back", action: {
 					activeSlideOverCard = .testResult
 				})
+				.padding(.top, 5)
 			}
 		}
 	}
