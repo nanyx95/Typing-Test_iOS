@@ -90,6 +90,7 @@ struct TypingView: View {
 								.padding(-1.0)
 //								.frame(width: .infinity, alignment: .leading)
 						}
+						.redacted(reason: typingVM.isLoading ? .placeholder : [])
 					}
 				}
 				.disabled(true)

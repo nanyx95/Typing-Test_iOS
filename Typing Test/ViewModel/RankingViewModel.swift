@@ -29,8 +29,8 @@ class RankingViewModel: ObservableObject {
 		}
 		
 		taskGroup.notify(queue: .main) {
-			self.generateRankingToDisplay()
 			self.isLoading = false
+			self.generateRankingToDisplay()
 		}
 	}
 	

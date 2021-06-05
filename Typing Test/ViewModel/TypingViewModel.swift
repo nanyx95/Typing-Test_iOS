@@ -10,11 +10,12 @@ import SwiftUI
 
 class TypingViewModel: ObservableObject {
 	
-	@Published var words: [Word] = []
+	@Published var words: [Word] = [Word(word: "Random"), Word(word: "Word"), Word(word: "Placeholder")]
 	@Published var typedWords: [TypedWord] = []
 	@Published var currentWord: String = ""
 	@Published var textFieldValue: String = ""
 	@Published var stats: Stats = Stats()
+	@Published var isLoading: Bool = true
 	var flagWrongWord: Bool = false
 	let userId: String
 	var topWPM: Int
@@ -33,6 +34,9 @@ class TypingViewModel: ObservableObject {
 		self.topWPM = UserDefaults.standard.integer(forKey: "top-wpm")
 		
 		NetworkAPI.shared.getWords(number: 5) { words in
+			DispatchQueue.main.async {
+				self.isLoading = false
+			}
 			self.words = words
 		}
 	}

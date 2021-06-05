@@ -15,8 +15,8 @@ class TestResultViewModel: ObservableObject {
 	init(userId: String) {
 		NetworkAPI.shared.getRankingById(userId: userId) { userRanking in
 			DispatchQueue.main.async {
-				self.userRanking = userRanking
 				self.isLoading = false
+				self.userRanking = userRanking
 			}
 		}
 	}
