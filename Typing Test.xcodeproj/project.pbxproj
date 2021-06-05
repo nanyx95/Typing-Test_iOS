@@ -26,6 +26,8 @@
 		CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */; };
 		CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07E2262208EC00EA67A4 /* Word.swift */; };
 		CAC712CD2648372E0078F333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC712CC2648372E0078F333 /* CardView.swift */; };
+		CAD2F856266BBF5E00D9F67F /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2F855266BBF5E00D9F67F /* NetworkAPI.swift */; };
+		CAD2F858266BCD3800D9F67F /* TestResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD2F857266BCD3800D9F67F /* TestResultViewModel.swift */; };
 		CAD517C82667C1C4005FF418 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517C72667C1C4005FF418 /* Ranking.swift */; };
 		CAD517CA2667C863005FF418 /* SaveScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */; };
 		CAD517CC2667D4D1005FF418 /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */; };
@@ -54,6 +56,8 @@
 		CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewModel.swift; sourceTree = "<group>"; };
 		CAAD07E2262208EC00EA67A4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CAC712CC2648372E0078F333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		CAD2F855266BBF5E00D9F67F /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		CAD2F857266BCD3800D9F67F /* TestResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultViewModel.swift; sourceTree = "<group>"; };
 		CAD517C72667C1C4005FF418 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScoreViewModel.swift; sourceTree = "<group>"; };
 		CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				CA8B54602635EFDA00343817 /* TimerViewModel.swift */,
 				CAD517C92667C863005FF418 /* SaveScoreViewModel.swift */,
 				CAD517CB2667D4D1005FF418 /* RankingViewModel.swift */,
+				CAD2F857266BCD3800D9F67F /* TestResultViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				CAC712CC2648372E0078F333 /* CardView.swift */,
 				CAE2B6512634999900D68350 /* NetworkManager.swift */,
 				CA0A51B6266ACC5E00B3E5DD /* PrimaryButtonStyle.swift */,
+				CAD2F855266BBF5E00D9F67F /* NetworkAPI.swift */,
 			);
 			path = Accessories;
 			sourceTree = "<group>";
@@ -253,9 +259,11 @@
 				CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */,
 				CAD517CA2667C863005FF418 /* SaveScoreViewModel.swift in Sources */,
 				CA0A51B7266ACC5E00B3E5DD /* PrimaryButtonStyle.swift in Sources */,
+				CAD2F856266BBF5E00D9F67F /* NetworkAPI.swift in Sources */,
 				CA4DB2032637585100D96CDA /* StatsView.swift in Sources */,
 				CAAC1D9A26515AAE008B4585 /* SaveScoreView.swift in Sources */,
 				CA16387D265032E6004B9D65 /* TypingView.swift in Sources */,
+				CAD2F858266BCD3800D9F67F /* TestResultViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

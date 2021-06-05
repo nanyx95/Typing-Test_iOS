@@ -12,6 +12,12 @@ struct TestResultView: View {
 	
 	@EnvironmentObject private var typingVM: TypingViewModel
 	@Binding var activeSlideOverCard: SlideOverCardViews?
+	@StateObject private var testResultVM: TestResultViewModel
+	
+	init(activeSlideOverCard: Binding<SlideOverCardViews?>, userId: String) {
+		self._activeSlideOverCard = activeSlideOverCard
+		_testResultVM = StateObject(wrappedValue: TestResultViewModel(userId: userId))
+	}
 	
 	@ViewBuilder fileprivate func resultContent(image: String, title: String, text1: String, text2: String) -> some View {
 		Image("\(image)")
@@ -46,9 +52,34 @@ struct TestResultView: View {
 				resultContent(image: "rocket", title: "You're a Rocket!", text1: "Nice!", text2: "Keep practicing!")
 			}
 			
-			Button("Save the score") {
-				activeSlideOverCard = .saveScore
-			}
+			Button(action: {
+				if !testResultVM.isLoading {
+					if let user = testResultVM.userRanking {
+						if typingVM.stats.correctWords > user.wpm {
+							activeSlideOverCard = .saveScore
+						} else {
+							activeSlideOverCard = nil
+						}
+					} else {
+						activeSlideOverCard = .saveScore
+					}
+				}
+			}, label: {
+				if testResultVM.isLoading {
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle(tint: Color.white))
+				} else {
+					if let user = testResultVM.userRanking {
+						if typingVM.stats.correctWords > user.wpm {
+							Text("Save the score")
+						} else {
+							Text("Close")
+						}
+					} else {
+						Text("Save the score")
+					}
+				}
+			})
 			.buttonStyle(PrimaryButtonStyle())
 		}
     }
@@ -56,7 +87,7 @@ struct TestResultView: View {
 
 struct TestResultView_Previews: PreviewProvider {
     static var previews: some View {
-		TestResultView(activeSlideOverCard: .constant(.testResult))
+		TestResultView(activeSlideOverCard: .constant(.testResult), userId: "test")
 			.environmentObject(TypingViewModel())
     }
 }

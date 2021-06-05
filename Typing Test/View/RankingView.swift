@@ -30,12 +30,17 @@ struct RankingView: View {
 				.bold()
 			
 			VStack {
-				ForEach(rankingVM.rankingToDisplay.indices, id: \.self) { index in
-					let user = rankingVM.rankingToDisplay[index]
-					if typingVM.userId.caseInsensitiveCompare(user.id) == .orderedSame {
-						RankingCell(position: rankingVM.userPosition!, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: true)
-					} else {
-						RankingCell(position: index + 1, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: false)
+				if rankingVM.isLoading {
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle(tint: Color("indigo-500")))
+				} else {
+					ForEach(rankingVM.rankingToDisplay.indices, id: \.self) { index in
+						let user = rankingVM.rankingToDisplay[index]
+						if typingVM.userId.caseInsensitiveCompare(user.id) == .orderedSame {
+							RankingCell(position: rankingVM.userPosition!, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: true)
+						} else {
+							RankingCell(position: index + 1, user: user.user, wpm: user.wpm, date: user.testDate, highlightsCell: false)
+						}
 					}
 				}
 			}

@@ -12,7 +12,12 @@ struct SaveScoreView: View {
 	
 	@EnvironmentObject private var typingVM: TypingViewModel
 	@Binding var activeSlideOverCard: SlideOverCardViews?
-	@ObservedObject private var saveScoreVM = SaveScoreViewModel()
+	@StateObject private var saveScoreVM: SaveScoreViewModel
+	
+	init(activeSlideOverCard: Binding<SlideOverCardViews?>, userId: String) {
+		self._activeSlideOverCard = activeSlideOverCard
+		_saveScoreVM = StateObject(wrappedValue: SaveScoreViewModel(userId: userId))
+	}
 	
 	var body: some View {
 		VStack {
@@ -52,7 +57,7 @@ struct SaveScoreView: View {
 
 struct SaveScoreView_Previews: PreviewProvider {
     static var previews: some View {
-		SaveScoreView(activeSlideOverCard: .constant(.saveScore))
+		SaveScoreView(activeSlideOverCard: .constant(.saveScore), userId: "test")
 			.environmentObject(TypingViewModel())
     }
 }

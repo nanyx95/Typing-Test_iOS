@@ -32,11 +32,15 @@ class TypingViewModel: ObservableObject {
 		// get topWPM
 		self.topWPM = UserDefaults.standard.integer(forKey: "top-wpm")
 		
-		getWords(number: 5)
+		NetworkAPI.shared.getWords(number: 5) { words in
+			self.words = words
+		}
 	}
 	
 	func resetTypingTest() {
-		getWords(number: 5)
+		NetworkAPI.shared.getWords(number: 5) { words in
+			self.words = words
+		}
 		typedWords = []
 		currentWord = ""
 		textFieldValue = ""
@@ -61,7 +65,10 @@ class TypingViewModel: ObservableObject {
 		if word.suffix(1) == " " {
 			print("spazio")
 			onSpace(word: word)
-			getWord()
+			NetworkAPI.shared.getWord() { word in
+				guard let word = word else { return }
+				self.words.append(word)
+			}
 		} else if word == String(textFieldValue.dropLast()) {
 			print("backspace")
 			onBackspace(word: word)
@@ -125,30 +132,30 @@ class TypingViewModel: ObservableObject {
 		textFieldValue = word
 	}
 	
-	func getWords(number: Int) {
-		let path = "words/\(number)"
-		
-		NetworkManager.shared.fetch(with: path, generalType: [Word].self) { result in
-			switch result {
-			case .success(let words):
-				self.words = words
-			case .failure(let error):
-				print(error)
-			}
-		}
-	}
+//	func getWords(number: Int) {
+//		let path = "words/\(number)"
+//		
+//		NetworkManager.shared.fetch(with: path, generalType: [Word].self) { result in
+//			switch result {
+//			case .success(let words):
+//				self.words = words
+//			case .failure(let error):
+//				print(error)
+//			}
+//		}
+//	}
 	
-	func getWord() {
-		let path = "word"
-		
-		NetworkManager.shared.fetch(with: path, generalType: Word.self) { result in
-			switch result {
-			case .success(let word):
-				self.words.append(word)
-			case .failure(let error):
-				print(error)
-			}
-		}
-	}
+//	func getWord() {
+//		let path = "word"
+//
+//		NetworkManager.shared.fetch(with: path, generalType: Word.self) { result in
+//			switch result {
+//			case .success(let word):
+//				self.words.append(word)
+//			case .failure(let error):
+//				print(error)
+//			}
+//		}
+//	}
 	
 }

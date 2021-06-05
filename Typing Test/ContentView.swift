@@ -84,9 +84,9 @@ struct ContentView: View {
 		.slideOverCard(item: $activeSlideOverCard) { item in
 			switch item {
 				case .testResult:
-					TestResultView(activeSlideOverCard: $activeSlideOverCard)
+					TestResultView(activeSlideOverCard: $activeSlideOverCard, userId: typingVM.userId)
 				case .saveScore:
-					SaveScoreView(activeSlideOverCard: $activeSlideOverCard)
+					SaveScoreView(activeSlideOverCard: $activeSlideOverCard, userId: typingVM.userId)
 				case .ranking:
 					RankingView(activeSlideOverCard: $activeSlideOverCard, userId: typingVM.userId)
 			}

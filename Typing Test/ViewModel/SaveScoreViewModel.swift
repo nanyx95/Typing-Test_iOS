@@ -8,6 +8,7 @@
 import Foundation
 
 class SaveScoreViewModel: ObservableObject {
+	
 	var limit: Int = 8
 
 	@Published var name: String = "" {
@@ -18,17 +19,19 @@ class SaveScoreViewModel: ObservableObject {
 		}
 	}
 	
-	func saveScore(userScore: Ranking, finished: @escaping () -> Void) {
-		let path = "ranking/save"
-		
-		NetworkManager.shared.post(with: path, generalType: userScore) { result in
-			switch result {
-			case .success(let score):
-				print(score)
-			case .failure(let error):
-				print(error)
+	init(userId: String) {
+		NetworkAPI.shared.getRankingById(userId: userId) { userRanking in
+			guard let userRanking = userRanking else { return }
+			DispatchQueue.main.async {
+				self.name = userRanking.user
 			}
+		}
+	}
+	
+	func saveScore(userScore: Ranking, finished: @escaping () -> Void) {
+		NetworkAPI.shared.saveScore(userScore: userScore) {
 			finished()
 		}
 	}
+	
 }
