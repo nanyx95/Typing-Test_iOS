@@ -48,6 +48,14 @@ class RankingViewModel: ObservableObject {
 		}
 	}
 	
+	#if DEBUG
+	func mockRankingForPreview() {
+		isLoading = false
+		rankingToDisplay.append(Ranking(id: "test1", user: "test1", wpm: 25, testDate: 1))
+		rankingToDisplay.append(Ranking(id: "test2", user: "Test2", wpm: 5, testDate: 1))
+	}
+	#endif
+	
 //	private func getPositionById(userId: String, dispatchGroup taskGroup: DispatchGroup) {
 //		taskGroup.enter()
 //		let path = "ranking/pos/\(userId)"

@@ -19,6 +19,14 @@ struct RankingView: View {
 		self.rankingVM = RankingViewModel(userId: userId)
 	}
 	
+	#if DEBUG
+	init(forPreview: Bool, activeSlideOverCard: Binding<SlideOverCardViews?>, userId: String) {
+		self._activeSlideOverCard = activeSlideOverCard
+		self.rankingVM = RankingViewModel(userId: userId)
+		self.rankingVM.mockRankingForPreview()
+	}
+	#endif
+	
 	var body: some View {
 		VStack {
 			Image("cup")
@@ -47,7 +55,7 @@ struct RankingView: View {
 			.padding(.horizontal, 5)
 			.padding(.top, 10)
 			.padding(.bottom, 25)
-			
+
 			Button("Close") {
 				activeSlideOverCard = nil
 			}
@@ -77,24 +85,20 @@ struct RankingCell: View {
 					Circle()
 						.fill(Color("indigo-500"))
 					
-					VStack {
-						Text("\(position)")
-							.font(.system(size: 20))
-							.foregroundColor(.white)
-					}
+					Text("\(position)")
+						.font(.callout)
+						.foregroundColor(.white)
 				} else {
 					Circle()
 						.strokeBorder(Color("indigo-500"), style: StrokeStyle(lineWidth: 1.5))
 					
-					VStack {
-						Text("\(position)")
-							.font(.system(size: 20))
-					}
+					Text("\(position)")
+						.font(.callout)
 				}
 			}
-			.frame(width: 50, height: 50, alignment: .center)
+			.frame(width: 40, height: 40, alignment: .center)
 			
-			VStack(alignment: .leading) {
+			VStack(alignment: .leading, spacing: 0) {
 				HStack(alignment: .center) {
 					Text(user)
 						.font(.title3)
@@ -104,6 +108,7 @@ struct RankingCell: View {
 						.foregroundColor(.gray)
 				}
 				WPMPill(wpm: wpm)
+					.padding(.vertical, 5)
 			}
 		}
 	}
@@ -128,7 +133,9 @@ struct WPMPill: View {
 
 struct RankingView_Previews: PreviewProvider {
     static var previews: some View {
-		RankingView(activeSlideOverCard: .constant(.ranking), userId: "test")
+		RankingView(forPreview: true, activeSlideOverCard: .constant(.ranking), userId: "test")
 			.environmentObject(TypingViewModel())
+			.padding()
+			.previewLayout(.sizeThatFits)
     }
 }

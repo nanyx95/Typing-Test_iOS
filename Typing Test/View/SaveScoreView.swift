@@ -59,5 +59,7 @@ struct SaveScoreView_Previews: PreviewProvider {
     static var previews: some View {
 		SaveScoreView(activeSlideOverCard: .constant(.saveScore), userId: "test")
 			.environmentObject(TypingViewModel())
+			.padding()
+			.previewLayout(.sizeThatFits)
     }
 }

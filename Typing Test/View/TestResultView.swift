@@ -89,5 +89,7 @@ struct TestResultView_Previews: PreviewProvider {
     static var previews: some View {
 		TestResultView(activeSlideOverCard: .constant(.testResult), userId: "test")
 			.environmentObject(TypingViewModel())
+			.padding()
+			.previewLayout(.sizeThatFits)
     }
 }
