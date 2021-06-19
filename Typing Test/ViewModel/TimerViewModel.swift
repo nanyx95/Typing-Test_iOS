@@ -9,7 +9,7 @@ import SwiftUI
 
 class TimerViewModel: ObservableObject {
 	
-	let defaultTimeRemainig = 10
+	let defaultTimeRemainig = 60
 	@Published var timerMode: TimerMode
 	@Published var secondsLeft: Int
 	
