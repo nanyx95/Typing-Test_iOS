@@ -12,7 +12,7 @@ struct TimerView: View {
 	@ObservedObject var timerVM: TimerViewModel
 	var lineWidth: CGFloat = 15
 	var radius: CGFloat = 50
-	var strokeColor: Color = Color("subtitle")
+	var strokeColor: Color = .accentColor
 	var textColor: Color = .black
 	
     var body: some View {

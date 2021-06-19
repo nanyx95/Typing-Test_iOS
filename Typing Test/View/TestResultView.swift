@@ -32,7 +32,7 @@ struct TestResultView: View {
 		Group {
 			Text("\(text1) You type with the speed of ") +
 			Text("\(typingVM.stats.correctWords) WPM ")
-				.foregroundColor(Color("indigo-500"))
+				.foregroundColor(.accentColor)
 				.bold() +
 			Text("(\(typingVM.stats.correctChars) CPM). Your accuracy was ") +
 			Text("\(typingVM.stats.accuracy)%")

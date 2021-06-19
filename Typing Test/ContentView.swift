@@ -26,7 +26,7 @@ struct ContentView: View {
 					}) {
 						ZStack {
 							Image(systemName: "chart.bar")
-								.renderingMode(.original)
+								.foregroundColor(.primary)
 							RoundedRectangle(cornerRadius: 15, style: .continuous)
 								.stroke(Color.gray.opacity(0.3), style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
 								.frame(width: 50, height: 50)
@@ -40,7 +40,7 @@ struct ContentView: View {
 						Text("Typing Test")
 							.font(.largeTitle)
 							.fontWeight(.bold)
-							.foregroundColor(Color("indigo-500"))
+							.foregroundColor(.accentColor)
 						Text("Test your typing skills")
 							.font(.title)
 					}
@@ -50,9 +50,9 @@ struct ContentView: View {
 				.padding(.top, 15)
 				.padding(.bottom, 25)
 				
-				CardView(color: Color("indigo-500")) {
+				CardView(color: .accentColor) {
 					HStack {
-						TimerView(timerVM: timerVM, lineWidth: 10, radius: 40, strokeColor: Color("indigo-300"), textColor: .white)
+						TimerView(timerVM: timerVM, lineWidth: 10, radius: 40, strokeColor: Color("timer"), textColor: .white)
 						StatsView(textColor: .white)
 					}
 					.frame(maxWidth: .infinity)
@@ -113,7 +113,7 @@ enum SlideOverCardViews: Identifiable {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		ContentView()
 			.environmentObject(TypingViewModel())
     }
 }

@@ -17,7 +17,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 		var body: some View {
 			configuration.label
 				.frame(maxWidth: .infinity, minHeight: 45, maxHeight: 45)
-				.background(Color("indigo-500"))
+				.background(Color.accentColor)
 				.foregroundColor(.white)
 				.clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
 				.opacity(configuration.isPressed || !isEnabled ? 0.75 : 1.0)

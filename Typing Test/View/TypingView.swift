@@ -86,7 +86,7 @@ struct TypingView: View {
 					.disableAutocorrection(true)
 					.autocapitalization(.none)
 					.foregroundColor(.white)
-					.accentColor(.black)
+					.accentColor(.primary)
 					.lineLimit(1)
 	//				.border(Color.black)
 					.frame(width: 1, height: 0)
@@ -127,7 +127,7 @@ struct TypingView: View {
 
 struct TypingView_Previews: PreviewProvider {
     static var previews: some View {
-        TypingView(timerVM: TimerViewModel())
+		TypingView(timerVM: TimerViewModel())
 			.environmentObject(TypingViewModel())
     }
 }

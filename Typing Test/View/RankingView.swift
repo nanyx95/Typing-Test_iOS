@@ -40,7 +40,7 @@ struct RankingView: View {
 			VStack {
 				if rankingVM.isLoading {
 					ProgressView()
-						.progressViewStyle(CircularProgressViewStyle(tint: Color("indigo-500")))
+						.progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
 				} else {
 					ForEach(rankingVM.rankingToDisplay.indices, id: \.self) { index in
 						let user = rankingVM.rankingToDisplay[index]
@@ -83,14 +83,14 @@ struct RankingCell: View {
 			ZStack {
 				if highlightsCell {
 					Circle()
-						.fill(Color("indigo-500"))
+						.fill(Color.accentColor)
 					
 					Text("\(position)")
 						.font(.callout)
 						.foregroundColor(.white)
 				} else {
 					Circle()
-						.strokeBorder(Color("indigo-500"), style: StrokeStyle(lineWidth: 1.5))
+						.strokeBorder(Color.accentColor, style: StrokeStyle(lineWidth: 1.5))
 					
 					Text("\(position)")
 						.font(.callout)
@@ -125,7 +125,7 @@ struct WPMPill: View {
 				.font(.system(size: fontSize, weight: .regular))
 				.foregroundColor(.white)
 				.padding(5)
-				.background(Color("indigo-500").opacity(0.7))
+				.background(Color.accentColor.opacity(0.7))
 				.cornerRadius(5)
 		}
 	}
