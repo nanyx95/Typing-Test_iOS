@@ -61,8 +61,7 @@ struct ContentView: View {
 				.padding(.vertical, 20)
 				
 				TypingView(timerVM: timerVM)
-					.padding(.top, 50)
-					.padding(.bottom, 75)
+					.frame(height: 100)
 				
 				Button("Retry") {
 					typingVM.resetTypingTest()

@@ -14,7 +14,7 @@ struct StatsView: View {
 	private let items: [GridItem] = Array(repeating: .init(.flexible(minimum: 100)), count: 2)
 	
     var body: some View {
-		LazyVGrid(columns: items, spacing: 10) {
+		LazyVGrid(columns: items, spacing: 15) {
 			VStack {
 				Text(String(typingVM.stats.correctWords))
 					.font(.title)
