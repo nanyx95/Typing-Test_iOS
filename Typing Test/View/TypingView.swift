@@ -19,20 +19,9 @@ struct TypingView: View {
 	@State private var bouncing = false
 	
     var body: some View {
-		let binding = Binding<String>(
+		let tfBinding = Binding<String>(
 			get: { typingVM.textFieldValue },
 			set: { newValue in
-				print("char \(newValue)")
-//				if newValue.suffix(1) == " " {
-//					print("spazio")
-//					typingVM.onInput(word: newValue, isSpace: true)
-//				} else if newValue == String(typingVM.textFieldValue.dropLast()) {
-//					print("backspace")
-//					typingVM.onInput(word: newValue, isBackspace: true)
-//				} else {
-//					print("lettera normale")
-//					typingVM.onInput(word: newValue)
-//				}
 				if timerVM.timerMode != .running {
 					timerVM.start()
 				}
@@ -81,18 +70,14 @@ struct TypingView: View {
 					}
 				)
 				
-				TextField(" ", text: binding, onCommit: { firstResponder = nil })
+				TextField(" ", text: tfBinding, onCommit: { firstResponder = nil })
 					.firstResponder(id: FirstResponders.inputWord, firstResponder: $firstResponder, resignableUserOperations: .all)
 					.disableAutocorrection(true)
 					.autocapitalization(.none)
 					.foregroundColor(.white)
 					.accentColor(.primary)
 					.lineLimit(1)
-	//				.border(Color.black)
 					.frame(width: 1, height: 0)
-	//					.onChange(of: typingVM.textFieldValue) {
-	//						submitWord(word: $0)
-	//					}
 				
 				Spacer().overlay(
 					ScrollView(.horizontal, showsIndicators: false) {
@@ -102,7 +87,6 @@ struct TypingView: View {
 									.font(.system(size: 25, design: .monospaced))
 									.tracking(-1)
 									.padding(-1.0)
-	//								.frame(width: .infinity, alignment: .leading)
 							}
 							.redacted(reason: typingVM.isLoading ? .placeholder : [])
 						}

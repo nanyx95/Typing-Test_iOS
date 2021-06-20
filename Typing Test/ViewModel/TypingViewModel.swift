@@ -64,20 +64,16 @@ class TypingViewModel: ObservableObject {
 		if currentWord.isEmpty {
 			currentWord = words.first?.word ?? ""
 		}
-		print("currentword \(currentWord)")
 		
 		if word.suffix(1) == " " {
-			print("spazio")
 			onSpace(word: word)
 			NetworkAPI.shared.getWord() { word in
 				guard let word = word else { return }
 				self.words.append(word)
 			}
 		} else if word == String(textFieldValue.dropLast()) {
-			print("backspace")
 			onBackspace(word: word)
 		} else {
-			print("lettera normale")
 			onChar(word: word)
 		}
 	}
@@ -108,11 +104,8 @@ class TypingViewModel: ObservableObject {
 	}
 	
 	private func onBackspace(word: String) {
-//		print("isback \(textFieldValue) == \(String(currentWord[..<textFieldValue.endIndex]))")
 		if !currentWord.isEmpty && !textFieldValue.isEmpty && textFieldValue.count <= currentWord.count && textFieldValue == String(currentWord[..<textFieldValue.endIndex]) {
 			words[0].word = String(textFieldValue.last!) + words[0].word
-//			words[0].word = Stjring(word.last!) + words[0].word
-//			flagWrongWord = false
 		}
 		if word.count <= currentWord.count && word == String(currentWord[..<word.endIndex]) {
 			flagWrongWord = false
@@ -123,43 +116,13 @@ class TypingViewModel: ObservableObject {
 	}
 	
 	private func onChar(word: String) {
-		// check character
-//		print("check char if: \(word) == \(String(currentWord[..<word.endIndex]))")
 		if (word.count <= currentWord.count && word == String(currentWord[..<word.endIndex])) {
-			print("modifico right word")
 			words[0].word = String(words[0].word.dropFirst())
 			flagWrongWord = false;
 		} else {
-			print("check char else")
 			flagWrongWord = true;
 		}
 		textFieldValue = word
 	}
-	
-//	func getWords(number: Int) {
-//		let path = "words/\(number)"
-//		
-//		NetworkManager.shared.fetch(with: path, generalType: [Word].self) { result in
-//			switch result {
-//			case .success(let words):
-//				self.words = words
-//			case .failure(let error):
-//				print(error)
-//			}
-//		}
-//	}
-	
-//	func getWord() {
-//		let path = "word"
-//
-//		NetworkManager.shared.fetch(with: path, generalType: Word.self) { result in
-//			switch result {
-//			case .success(let word):
-//				self.words.append(word)
-//			case .failure(let error):
-//				print(error)
-//			}
-//		}
-//	}
 	
 }

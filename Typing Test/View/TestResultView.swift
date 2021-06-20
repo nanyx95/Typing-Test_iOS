@@ -19,11 +19,11 @@ struct TestResultView: View {
 		_testResultVM = StateObject(wrappedValue: TestResultViewModel(userId: userId))
 	}
 	
-	@ViewBuilder fileprivate func resultContent(image: String, title: String, text1: String, text2: String) -> some View {
+	@ViewBuilder
+	private func resultContent(image: String, title: String, text1: String, text2: String) -> some View {
 		Image("\(image)")
 			.resizable()
 			.aspectRatio(contentMode: .fit)
-//			.padding(.horizontal)
 		
 		Text("\(title)")
 			.font(.title2)
