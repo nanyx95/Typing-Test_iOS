@@ -11,6 +11,7 @@ import SlideOverCard
 
 struct ContentView: View {
 	
+	@Environment(\.scenePhase) var scenePhase
 	@EnvironmentObject private var typingVM: TypingViewModel
 	@StateObject private var timerVM = TimerViewModel()
 	@State private var activeSlideOverCard: SlideOverCardViews?
@@ -92,6 +93,12 @@ struct ContentView: View {
 		}
 		.onChange(of: activeSlideOverCard) { status in
 			if status == nil {
+				typingVM.resetTypingTest()
+				timerVM.reset()
+			}
+		}
+		.onChange(of: scenePhase) { newPhase in
+			if newPhase == .background {
 				typingVM.resetTypingTest()
 				timerVM.reset()
 			}

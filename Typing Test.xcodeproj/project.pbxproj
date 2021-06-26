@@ -22,7 +22,6 @@
 		CAAC1D9626514B9D008B4585 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = CAAC1D9526514B9D008B4585 /* SlideOverCard */; };
 		CAAC1D9826515A51008B4585 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9726515A51008B4585 /* TestResultView.swift */; };
 		CAAC1D9A26515AAE008B4585 /* SaveScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9926515AAE008B4585 /* SaveScoreView.swift */; };
-		CAAC1D9C2651757B008B4585 /* TestSlideOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */; };
 		CAAD07DF2622033B00EA67A4 /* TypingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */; };
 		CAAD07E3262208EC00EA67A4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD07E2262208EC00EA67A4 /* Word.swift */; };
 		CAC712CD2648372E0078F333 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC712CC2648372E0078F333 /* CardView.swift */; };
@@ -52,7 +51,6 @@
 		CA8B54632635F32200343817 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		CAAC1D9726515A51008B4585 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		CAAC1D9926515AAE008B4585 /* SaveScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveScoreView.swift; sourceTree = "<group>"; };
-		CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSlideOver.swift; sourceTree = "<group>"; };
 		CAAD07DE2622033B00EA67A4 /* TypingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingViewModel.swift; sourceTree = "<group>"; };
 		CAAD07E2262208EC00EA67A4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CAC712CC2648372E0078F333 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				CA812BD7260F9F3E00A64104 /* Assets.xcassets */,
 				CA812BDC260F9F3E00A64104 /* Info.plist */,
 				CA812BD9260F9F3E00A64104 /* Preview Content */,
-				CAAC1D9B2651757B008B4585 /* TestSlideOver.swift */,
 			);
 			path = "Typing Test";
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				CAAC1D9826515A51008B4585 /* TestResultView.swift in Sources */,
 				CA16387F265038DD004B9D65 /* RankingView.swift in Sources */,
 				CA812BE5260FA5E000A64104 /* TypedWord.swift in Sources */,
-				CAAC1D9C2651757B008B4585 /* TestSlideOver.swift in Sources */,
 				CA6362DF265AB00E00AB31E3 /* Stats.swift in Sources */,
 				CA812BD6260F9F3D00A64104 /* ContentView.swift in Sources */,
 				CAD517C82667C1C4005FF418 /* Ranking.swift in Sources */,
